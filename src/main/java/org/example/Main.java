@@ -13,13 +13,8 @@ public class Main {
 
         game.initGame();
 
-        game.prepareBoard();
+        game.game();
 
-        game.wipeBoard();
-
-        game.showBoard();
-
-        game.prepareBoard();
 
 
 

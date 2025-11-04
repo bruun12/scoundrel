@@ -8,41 +8,48 @@ public class Game {
 
     static List<Card> board = new ArrayList<>();
     static Stack<Card> deck = new Stack<>();
-
+    static Player player = new Player();
     // Game Preparing Functions
 
-    public Stack<Card> initGame(){
+    public void initGame(){
         Stack<Card> deck = createCards();
 
         Collections.shuffle(deck, new Random());
 
-        return deck;
+        prepareBoard();
     }
 
     public Stack<Card> createCards(){
-
         for (int i = 2; i < 15; i++) {
             Card m = new MonsterCard(i);
+            deck.push(m);
+            deck.push(m);
+
             Card h = new HealthCard(i);
-            Card w = new WeaponCard(i);
-            deck.push(m);
-            deck.push(m);
             deck.push(h);
+
+            Card w = new WeaponCard(i);
             deck.push(w);
         }
 
         return deck;
     }
 
-
-    //Midgame Functions
-
     public void prepareBoard(){
         while (board.size() < 4){
             board.add(deck.pop());
         }
+
         showBoard();
     }
+
+    //Midgame Functions
+    public void game(){
+        while(true){
+
+        }
+    }
+
 
     public void showBoard(){
         if (board.isEmpty()){
@@ -60,12 +67,6 @@ public class Game {
             deck.addFirst(board.getFirst());
             board.removeFirst();
         }
+        prepareBoard();
     }
-
-
-
-
-
-
-
 }
