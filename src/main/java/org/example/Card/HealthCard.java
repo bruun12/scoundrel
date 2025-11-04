@@ -7,4 +7,9 @@ public class HealthCard extends Card{
     public HealthCard(int value){
         super(HEALTH, value);
     }
+
+    @Override
+    public void performAction(){
+
+    }
 }

@@ -24,4 +24,6 @@ abstract public class Card {
         return "Value: " + getValue() + " Type: " + getType();
     }
 
+    abstract void performAction();
+
 }

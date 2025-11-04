@@ -8,4 +8,9 @@ public class MonsterCard extends Card{
     public MonsterCard(int value){
         super(MONSTER, value);
     }
+
+    @Override
+    public void performAction(){
+
+    }
 }

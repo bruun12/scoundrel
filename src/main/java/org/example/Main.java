@@ -11,8 +11,17 @@ public class Main {
     public static void main(String[] args) {
         Game game = new Game();
 
-        Stack<Card> deck =  game.initGame();
+        game.initGame();
 
-        
+        game.prepareBoard();
+
+        game.wipeBoard();
+
+        game.showBoard();
+
+        game.prepareBoard();
+
+
+
     }
 }

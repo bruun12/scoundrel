@@ -7,4 +7,9 @@ public class WeaponCard extends Card{
     public WeaponCard(int value){
         super(WEAPON, value);
     }
+
+    @Override
+    public void performAction(){
+
+    }
 }

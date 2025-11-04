@@ -2,13 +2,14 @@ package org.example;
 
 import org.example.Card.*;
 
-import java.util.Collections;
-import java.util.Random;
-import java.util.Stack;
-
-import static org.example.Type.*;
+import java.util.*;
 
 public class Game {
+
+    static List<Card> board = new ArrayList<>();
+    static Stack<Card> deck = new Stack<>();
+
+    // Game Preparing Functions
 
     public Stack<Card> initGame(){
         Stack<Card> deck = createCards();
@@ -19,8 +20,6 @@ public class Game {
     }
 
     public Stack<Card> createCards(){
-
-        Stack<Card> deck = new Stack<>();
 
         for (int i = 2; i < 15; i++) {
             Card m = new MonsterCard(i);
@@ -35,11 +34,38 @@ public class Game {
         return deck;
     }
 
-//    public Stack<Card> shuffle(Stack<Card> deck){
-//
-//
-//        return deck
-//    }
+
+    //Midgame Functions
+
+    public void prepareBoard(){
+        while (board.size() < 4){
+            board.add(deck.pop());
+        }
+        showBoard();
+    }
+
+    public void showBoard(){
+        if (board.isEmpty()){
+            System.out.println("Board is empty");
+        } else {
+            for (Card card : board) {
+                System.out.println(card.presentCard());
+            }
+        }
+        System.out.println();
+    }
+
+    public void wipeBoard(){
+        while (!board.isEmpty()){
+            deck.addFirst(board.getFirst());
+            board.removeFirst();
+        }
+    }
+
+
+
+
+
 
 
 }
