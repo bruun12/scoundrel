@@ -1,4 +1,4 @@
-Play Scoundrel in console.
+Play the card game "Scoundrel" in console.
 
 Made entirely in Java.
 
