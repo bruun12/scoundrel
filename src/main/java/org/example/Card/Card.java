@@ -1,6 +1,7 @@
 package org.example.Card;
 
 
+import org.example.Player;
 import org.example.Type;
 
 abstract public class Card {
@@ -21,9 +22,8 @@ abstract public class Card {
     }
 
     public String presentCard(){
-        return "Value: " + getValue() + " Type: " + getType();
+        return "| Value: " + getValue() + " Type: " + getType() + " |    ";
     }
 
-    abstract void performAction();
-
+    public abstract void performAction(Player p);
 }

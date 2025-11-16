@@ -1,5 +1,7 @@
 package org.example.Card;
 
+import org.example.Player;
+
 import static org.example.Type.HEALTH;
 
 public class HealthCard extends Card{
@@ -9,7 +11,8 @@ public class HealthCard extends Card{
     }
 
     @Override
-    public void performAction(){
-
+    public void performAction(Player p){
+        p.healed(this.getValue());
+        System.out.println("Player healed");
     }
 }

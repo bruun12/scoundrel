@@ -1,5 +1,7 @@
 package org.example.Card;
 
+import org.example.Player;
+
 import static org.example.Type.WEAPON;
 
 public class WeaponCard extends Card{
@@ -9,7 +11,8 @@ public class WeaponCard extends Card{
     }
 
     @Override
-    public void performAction(){
-
+    public void performAction(Player p){
+        p.setWeaponCard(this);
+        System.out.println("Weapon equipped");
     }
 }

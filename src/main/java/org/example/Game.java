@@ -6,17 +6,18 @@ import java.util.*;
 
 public class Game {
 
-    static List<Card> board = new ArrayList<>();
+    static Board board = new Board();
     static Stack<Card> deck = new Stack<>();
     static Player player = new Player();
     // Game Preparing Functions
+
 
     public void initGame(){
         Stack<Card> deck = createCards();
 
         Collections.shuffle(deck, new Random());
 
-        prepareBoard();
+        board.prepareBoard();
     }
 
     public Stack<Card> createCards(){
@@ -35,18 +36,11 @@ public class Game {
         return deck;
     }
 
-    public void prepareBoard(){
-        while (board.size() < 4){
-            board.add(deck.pop());
-        }
-
-        showBoard();
-    }
 
     //Midgame Functions
     public void game(){
         while(true){
-
+            turn();
         }
     }
 
@@ -55,18 +49,32 @@ public class Game {
         if (board.isEmpty()){
             System.out.println("Board is empty");
         } else {
-            for (Card card : board) {
-                System.out.println(card.presentCard());
+            for (int i = 0; i < board.size(); i++) {
+                System.out.print(i + ":" + board.get(i).presentCard());
             }
         }
         System.out.println();
     }
 
-    public void wipeBoard(){
-        while (!board.isEmpty()){
-            deck.addFirst(board.getFirst());
-            board.removeFirst();
-        }
-        prepareBoard();
+
+    public void turn(){
+        showBoard();
+
+        System.out.println(player.getHealthPoints());
+
+        Decision d = new Decision();
+
+        d.makeDecision();
+
+        doAction(d.getDecision());
     }
+
+    public void doAction(int decision){
+        if (decision == 4){
+            board.wipeBoard();
+        } else {
+            player.actionEffect(board.get(decision));
+        }
+    }
+
 }
