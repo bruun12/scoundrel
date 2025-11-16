@@ -22,17 +22,16 @@ public class Board {
         return board.get(i);
     }
 
-    public Card getFirst() {
-        return board.getFirst();
-    }
-
-    public void removeFirst() {
-        board.removeFirst();
+    public void remove(int i) {
+        board.remove(i);
     }
 
     public void prepareBoard(){
         while (board.size() < 4){
             board.add(deck.pop());
+            if (deck.isEmpty()){
+                return;
+            }
         }
     }
 

@@ -17,6 +17,19 @@ public class Player {
         c.performAction(this);
     }
 
+    public void showStats(){
+        System.out.println("------ Player Stats ------");
+        System.out.println("Health Points: " + healthPoints);
+        if (weaponCard == null){
+            System.out.println("Weapon Value: Weapon not equipped");
+            System.out.println("Weapon Fatigue: Weapon not equipped");
+        } else {
+            System.out.println("Weapon Value: " + weaponCard.getValue());
+            System.out.println("Weapon Fatigue: " + weaponCard.getSlayValue());
+        }
+        System.out.println("--------------------------");
+    }
+
     public void damaged(int damage){
         healthPoints = healthPoints - damage;
     }
@@ -29,6 +42,10 @@ public class Player {
 
     public void setWeaponCard(WeaponCard weaponCard) {
         this.weaponCard = weaponCard;
+    }
+
+    public WeaponCard getWeaponCard(){
+        return this.weaponCard;
     }
 
 }

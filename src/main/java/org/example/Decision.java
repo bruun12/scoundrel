@@ -14,21 +14,24 @@ public class Decision {
         return decision;
     }
 
-    public void makeDecision(){
+    public void makeDecision(Board board){
         Scanner scanner = new Scanner(System.in);
 
-
-
         do {
-            System.out.println("Press the number to the card you want to play. To wipe the board press 4");
+            if (board.size() == 4){
+                System.out.println("Press the number to the card you want to play. To wipe the board press " + board.size());
+            } else{
+                System.out.println("Press the number to the card you want to play.");
+            }
             setDecision(scanner.nextInt());
-            checkDecision();
+            checkDecision(board);
         }while(isInvalid);
-
     }
 
-    public void checkDecision(){
-        if (decision < 5){
+    public void checkDecision(Board board){
+        if (decision >= 0 && decision < board.size()){
+            isInvalid = false;
+        } else if (decision == board.size() && board.size() == 4) {
             isInvalid = false;
         } else {
             System.out.println("Invalid input ");
